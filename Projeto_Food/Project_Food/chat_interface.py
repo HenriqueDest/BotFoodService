@@ -1,3 +1,14 @@
+import os
+import subprocess
+
+# Verifica se o transformers está instalado
+try:
+    import transformers
+except ImportError:
+    # Se não estiver instalado, instala o transformers
+    subprocess.check_call([os.sys.executable, '-m', 'pip', 'install', 'transformers'])
+
+# Continue com o resto do seu código
 import sqlite3
 import pandas as pd
 from transformers import pipeline
@@ -100,25 +111,8 @@ def chatbot_response(question):
 st.title("Chatbot sobre Franquias")
 st.write("Digite sua pergunta sobre franquias no campo abaixo e pressione Enter:")
 
-# Histórico de conversas
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
-# Input do usuário
 user_input = st.text_input("Você:", "")
 
 if user_input:
-    # Adicionar pergunta do usuário ao histórico
-    st.session_state.messages.append({"user": user_input, "bot": None})
-
-    # Obter resposta do bot
     response = chatbot_response(user_input)
-
-    # Adicionar resposta do bot ao histórico
-    st.session_state.messages[-1]["bot"] = response
-
-# Exibir histórico de conversas
-for message in st.session_state.messages:
-    st.write(f"Você: {message['user']}")
-    if message["bot"]:
-        st.write(f"Bot: {message['bot']}")
+    st.write(f"Bot: {response}")
