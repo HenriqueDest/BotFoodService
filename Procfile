@@ -1,1 +1,1 @@
-web: streamlit run --server.port $PORT Projeto_Food/Project_Food/chat_interface.py
+web: uvicorn chat_interface:app --host 0.0.0.0 --port $PORT

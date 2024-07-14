@@ -1,7 +1,7 @@
-import sqlite3
-import pandas as pd
-from transformers import pipeline
 import streamlit as st
+import pandas as pd
+import torch
+from transformers import pipeline
 
 # Configurar o pipeline do modelo de linguagem
 nlp = pipeline("text-generation", model="microsoft/DialoGPT-small")
