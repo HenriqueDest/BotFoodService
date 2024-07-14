@@ -1,14 +1,3 @@
-import os
-import subprocess
-
-# Verifica se o transformers está instalado
-try:
-    import transformers
-except ImportError:
-    # Se não estiver instalado, instala o transformers
-    subprocess.check_call([os.sys.executable, '-m', 'pip', 'install', 'transformers'])
-
-# Continue com o resto do seu código
 import sqlite3
 import pandas as pd
 from transformers import pipeline
